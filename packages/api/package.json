@@ -11,6 +11,7 @@
   },
   "scripts": {},
   "dependencies": {
+    "@mastra/core": "^1.5.0",
     "@mednex/auth": "workspace:*",
     "@mednex/db": "workspace:*",
     "@mednex/env": "workspace:*",

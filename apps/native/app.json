@@ -8,9 +8,7 @@
     },
     "name": "mednex",
     "slug": "mednex",
-    "plugins": [
-      "expo-font"
-    ],
+    "plugins": ["expo-font"],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
