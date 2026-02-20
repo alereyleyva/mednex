@@ -22,12 +22,11 @@ export const link = new RPCLink({
   fetch:
     Platform.OS !== "web"
       ? undefined
-      : function (url, options) {
-          return fetch(url, {
+      : (url, options) =>
+          fetch(url, {
             ...options,
             credentials: "include",
-          });
-        },
+          }),
   headers() {
     if (Platform.OS === "web") {
       return {};
