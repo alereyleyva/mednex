@@ -1,0 +1,3 @@
+{
+  "extends": "@mednex/config/tsconfig.base.json"
+}

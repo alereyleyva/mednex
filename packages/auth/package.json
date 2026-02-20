@@ -1,0 +1,25 @@
+{
+  "name": "@mednex/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@better-auth/expo": "catalog:",
+    "@mednex/db": "workspace:*",
+    "@mednex/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@mednex/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
