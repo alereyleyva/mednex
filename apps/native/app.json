@@ -8,10 +8,18 @@
     },
     "name": "mednex",
     "slug": "mednex",
-    "plugins": ["expo-font"],
+    "plugins": [
+      "expo-font"
+    ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a32ae6de-c2ca-4f24-8821-b891ff3b3b38"
+      }
+    },
+    "owner": "alereyleyva"
   }
 }
