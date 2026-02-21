@@ -20,22 +20,22 @@ const signUpSchema = z
     name: z
       .string()
       .trim()
-      .min(1, "Name is required")
-      .min(2, "Name must be at least 2 characters"),
+      .min(1, "El nombre es obligatorio")
+      .min(2, "El nombre debe tener al menos 2 caracteres"),
     email: z
       .string()
       .trim()
-      .min(1, "Email is required")
-      .email("Enter a valid email address"),
+      .min(1, "El correo es obligatorio")
+      .email("Ingresa un correo valido"),
     password: z
       .string()
-      .min(1, "Password is required")
-      .min(8, "Use at least 8 characters"),
-    confirmPassword: z.string().min(1, "Please repeat your password"),
+      .min(1, "La contrasena es obligatoria")
+      .min(8, "Usa al menos 8 caracteres"),
+    confirmPassword: z.string().min(1, "Por favor repite tu contrasena"),
   })
   .refine((values) => values.password === values.confirmPassword, {
     path: ["confirmPassword"],
-    message: "Passwords do not match",
+    message: "Las contrasenas no coinciden",
   });
 
 function getErrorMessage(error: unknown): string | null {
@@ -73,14 +73,16 @@ function normalizeSignUpError(error: unknown): string {
     rawMessage.includes("already registered") ||
     rawMessage.includes("duplicate")
   ) {
-    return "An account with this email already exists. Try signing in instead.";
+    return "Ya existe una cuenta con este correo. Prueba iniciar sesion.";
   }
 
   if (rawMessage.includes("rate limit") || rawMessage.includes("too many")) {
-    return "Too many attempts. Please wait a moment and try again.";
+    return "Demasiados intentos. Espera un momento e intentalo de nuevo.";
   }
 
-  return getErrorMessage(error) ?? "Unable to create your account right now.";
+  return (
+    getErrorMessage(error) ?? "No se puede crear tu cuenta en este momento."
+  );
 }
 
 export function SignUp() {
@@ -124,7 +126,7 @@ export function SignUp() {
             formApi.reset();
             toast.show({
               variant: "success",
-              label: "Account created successfully",
+              label: "Cuenta creada correctamente",
             });
             queryClient.refetchQueries();
           },
@@ -137,10 +139,10 @@ export function SignUp() {
     <View className="gap-4">
       <View className="gap-1">
         <Text className="font-semibold text-foreground text-lg">
-          Create account
+          Crear cuenta
         </Text>
         <Text className="text-foreground/60 text-sm">
-          Set up your profile in under a minute.
+          Configura tu perfil en menos de un minuto.
         </Text>
       </View>
 
@@ -164,7 +166,7 @@ export function SignUp() {
                   {(field) => (
                     <TextField>
                       <Label className="mb-1 text-foreground/70 text-xs uppercase tracking-wide">
-                        Full Name
+                        Nombre completo
                       </Label>
                       <Input
                         className="rounded-xl bg-background"
@@ -176,7 +178,7 @@ export function SignUp() {
                           }
                           field.handleChange(text);
                         }}
-                        placeholder="John Doe"
+                        placeholder="Nombre Apellido"
                         autoComplete="name"
                         textContentType="name"
                         returnKeyType="next"
@@ -199,7 +201,7 @@ export function SignUp() {
                   {(field) => (
                     <TextField>
                       <Label className="mb-1 text-foreground/70 text-xs uppercase tracking-wide">
-                        Email
+                        Correo
                       </Label>
                       <Input
                         className="rounded-xl bg-background"
@@ -237,7 +239,7 @@ export function SignUp() {
                   {(field) => (
                     <TextField>
                       <Label className="mb-1 text-foreground/70 text-xs uppercase tracking-wide">
-                        Password
+                        Contrasena
                       </Label>
                       <Input
                         className="rounded-xl bg-background"
@@ -274,7 +276,7 @@ export function SignUp() {
                   {(field) => (
                     <TextField>
                       <Label className="mb-1 text-foreground/70 text-xs uppercase tracking-wide">
-                        Repeat Password
+                        Repetir contrasena
                       </Label>
                       <Input
                         className="rounded-xl bg-background"
@@ -313,7 +315,7 @@ export function SignUp() {
                     <Spinner size="sm" color="default" />
                   ) : (
                     <Button.Label className="font-semibold">
-                      Create Account
+                      Crear cuenta
                     </Button.Label>
                   )}
                 </Button>

@@ -16,7 +16,9 @@ export default function TabsLayout() {
       <Container className="px-6 py-8" isScrollable={false}>
         <View className="flex-1 items-center justify-center">
           <Spinner size="lg" color="default" />
-          <Text className="mt-3 text-muted">Loading workspace...</Text>
+          <Text className="mt-3 text-muted">
+            Cargando espacio de trabajo...
+          </Text>
         </View>
       </Container>
     );
@@ -46,7 +48,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="home"
         options={{
-          title: "Home",
+          title: "Inicio",
           tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <Ionicons name="home-outline" size={size} color={color} />
           ),
@@ -55,7 +57,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="chat"
         options={{
-          title: "AI Chat",
+          title: "Chat IA",
           tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <Ionicons
               name="chatbubble-ellipses-outline"
@@ -68,7 +70,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="account"
         options={{
-          title: "Account",
+          title: "Cuenta",
           tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <Ionicons name="person-outline" size={size} color={color} />
           ),

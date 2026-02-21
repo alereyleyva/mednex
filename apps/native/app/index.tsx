@@ -24,10 +24,10 @@ export default function AuthLandingScreen() {
             <View className="items-center gap-3">
               <Spinner size="lg" color="default" />
               <Text className="font-medium text-foreground">
-                Preparing workspace
+                Preparando espacio de trabajo
               </Text>
               <Text className="text-muted text-sm">
-                Checking your session...
+                Verificando tu sesion...
               </Text>
             </View>
           </View>
@@ -58,11 +58,11 @@ export default function AuthLandingScreen() {
 
             <View className="items-center gap-2">
               <Text className="font-extrabold text-4xl text-foreground tracking-tight">
-                Welcome back
+                Bienvenido de nuevo
               </Text>
               <Text className="max-w-sm text-center text-base text-foreground/60 leading-6">
-                Sign in to Mednex for guided procedures and fast clinical
-                answers.
+                Inicia sesion en Mednex para procedimientos guiados y respuestas
+                clinicas rapidas.
               </Text>
             </View>
           </View>
@@ -82,7 +82,7 @@ export default function AuthLandingScreen() {
                       : "font-medium text-foreground/60"
                   }
                 >
-                  Sign In
+                  Iniciar sesion
                 </Button.Label>
               </Button>
 
@@ -99,7 +99,7 @@ export default function AuthLandingScreen() {
                       : "font-medium text-foreground/60"
                   }
                 >
-                  Create Account
+                  Crear cuenta
                 </Button.Label>
               </Button>
             </View>
@@ -110,7 +110,8 @@ export default function AuthLandingScreen() {
           </Card>
 
           <Text className="px-4 text-center text-foreground/50 text-xs leading-5">
-            By continuing, you agree to the Mednex Terms and Privacy Policy.
+            Al continuar, aceptas los Terminos y la Politica de privacidad de
+            Mednex.
           </Text>
         </View>
       </View>

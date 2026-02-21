@@ -7,7 +7,7 @@ import { Container } from "@/components/container";
 export default function NotFoundScreen() {
   return (
     <>
-      <Stack.Screen options={{ title: "Not Found" }} />
+      <Stack.Screen options={{ title: "No encontrado" }} />
       <Container>
         <View className="flex-1 items-center justify-center p-4">
           <Surface
@@ -16,13 +16,13 @@ export default function NotFoundScreen() {
           >
             <Text className="mb-3 text-4xl">🤔</Text>
             <Text className="mb-1 font-medium text-foreground text-lg">
-              Page Not Found
+              Pagina no encontrada
             </Text>
             <Text className="mb-4 text-center text-muted text-sm">
-              The page you're looking for doesn't exist.
+              La pagina que buscas no existe.
             </Text>
             <Link href="/" asChild>
-              <Button size="sm">Go Home</Button>
+              <Button size="sm">Ir al inicio</Button>
             </Link>
           </Surface>
         </View>

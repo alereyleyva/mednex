@@ -14,7 +14,7 @@ export default function AccountTabScreen() {
     <Container className="p-6">
       <View className="gap-6 pb-6">
         <Card variant="secondary" className="rounded-2xl p-5">
-          <Card.Title className="mb-3 font-bold text-lg">Profile</Card.Title>
+          <Card.Title className="mb-3 font-bold text-lg">Perfil</Card.Title>
           <Text className="font-semibold text-base text-foreground">
             {session?.user.name}
           </Text>
@@ -28,17 +28,17 @@ export default function AccountTabScreen() {
             }}
           >
             <Button.Label className="font-medium text-white">
-              Log Out
+              Cerrar sesion
             </Button.Label>
           </Button>
         </Card>
 
         <Card variant="secondary" className="rounded-2xl p-5">
           <Card.Title className="mb-2 font-semibold text-base">
-            Private API Data
+            Datos privados de la API
           </Card.Title>
           <Card.Description className="text-muted">
-            {privateData.data?.message ?? "Loading private data..."}
+            {privateData.data?.message ?? "Cargando datos privados..."}
           </Card.Description>
         </Card>
       </View>

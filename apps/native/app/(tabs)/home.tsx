@@ -6,21 +6,21 @@ import { Container } from "@/components/container";
 
 const moduleCards = [
   {
-    title: "Guided Procedures",
+    title: "Procedimientos guiados",
     description:
-      "Step-by-step clinical workflows with safety checks and escalation prompts.",
+      "Flujos clinicos paso a paso con verificaciones de seguridad y alertas de escalamiento.",
     icon: "medkit-outline",
   },
   {
-    title: "Medical Knowledge Base",
+    title: "Base de conocimiento medico",
     description:
-      "Fast retrieval of protocols, differential references, and evidence summaries.",
+      "Consulta rapida de protocolos, referencias diferenciales y resumenes de evidencia.",
     icon: "library-outline",
   },
   {
-    title: "Advanced Image Analysis",
+    title: "Analisis avanzado de imagenes",
     description:
-      "Assistive interpretation workflows for radiology, wound care, and triage images.",
+      "Flujos de apoyo para interpretar imagenes de radiologia, cuidado de heridas y triaje.",
     icon: "scan-outline",
   },
 ];
@@ -33,22 +33,22 @@ export default function HomeTabScreen() {
       <View className="gap-4 pb-6">
         <View className="rounded-3xl bg-primary p-6">
           <Chip color="default" size="sm" className="mb-3 self-start">
-            <Chip.Label>Clinical Assistant Workspace</Chip.Label>
+            <Chip.Label>Espacio de asistente clinico</Chip.Label>
           </Chip>
           <Text className="font-bold text-3xl text-primary-foreground">
             Mednex
           </Text>
           <Text className="mt-2 text-base text-primary-foreground/85 leading-6">
-            Your AI co-pilot for faster, safer decisions across procedures,
-            clinical documentation, and patient communication.
+            Tu copiloto de IA para decisiones mas rapidas y seguras en
+            procedimientos, documentacion clinica y comunicacion con pacientes.
           </Text>
         </View>
 
         <Card variant="secondary" className="rounded-2xl p-5">
-          <Card.Title className="mb-2">Feature Modules</Card.Title>
+          <Card.Title className="mb-2">Modulos de funciones</Card.Title>
           <Card.Description>
-            This space is prepared for future modules and widgets that can be
-            enabled per role.
+            Este espacio esta preparado para futuros modulos y widgets que se
+            pueden habilitar por rol.
           </Card.Description>
           <View className="mt-4 gap-3">
             {moduleCards.map((module) => (
@@ -76,10 +76,10 @@ export default function HomeTabScreen() {
         </Card>
 
         <Card variant="secondary" className="rounded-2xl p-5">
-          <Card.Title className="mb-2">AI Chat Ready</Card.Title>
+          <Card.Title className="mb-2">Chat IA disponible</Card.Title>
           <Card.Description>
-            Open the AI Chat tab to ask triage, diagnosis-support, and
-            procedure-planning questions.
+            Abre la pestana de Chat IA para hacer preguntas de triaje, apoyo
+            diagnostico y planificacion de procedimientos.
           </Card.Description>
         </Card>
       </View>

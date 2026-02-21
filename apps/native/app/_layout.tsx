@@ -20,7 +20,7 @@ function StackLayout() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen
         name="modal"
-        options={{ title: "Modal", presentation: "modal" }}
+        options={{ title: "Ventana modal", presentation: "modal" }}
       />
     </Stack>
   );

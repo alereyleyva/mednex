@@ -19,12 +19,12 @@ const signInSchema = z.object({
   email: z
     .string()
     .trim()
-    .min(1, "Email is required")
-    .email("Enter a valid email address"),
+    .min(1, "El correo es obligatorio")
+    .email("Ingresa un correo valido"),
   password: z
     .string()
-    .min(1, "Password is required")
-    .min(8, "Use at least 8 characters"),
+    .min(1, "La contrasena es obligatoria")
+    .min(8, "Usa al menos 8 caracteres"),
 });
 
 function getErrorMessage(error: unknown): string | null {
@@ -62,15 +62,16 @@ function normalizeSignInError(error: unknown): string {
     rawMessage.includes("invalid email or password") ||
     rawMessage.includes("user not found")
   ) {
-    return "Email or password is incorrect. Please try again.";
+    return "El correo o la contrasena son incorrectos. Intentalo de nuevo.";
   }
 
   if (rawMessage.includes("too many") || rawMessage.includes("rate limit")) {
-    return "Too many attempts. Please wait a moment and try again.";
+    return "Demasiados intentos. Espera un momento e intentalo de nuevo.";
   }
 
   return (
-    getErrorMessage(error) ?? "Unable to sign in right now. Please try again."
+    getErrorMessage(error) ??
+    "No se puede iniciar sesion en este momento. Intentalo de nuevo."
   );
 }
 
@@ -104,7 +105,7 @@ function SignIn() {
             formApi.reset();
             toast.show({
               variant: "success",
-              label: "Signed in successfully",
+              label: "Sesion iniciada correctamente",
             });
             queryClient.refetchQueries();
           },
@@ -116,9 +117,11 @@ function SignIn() {
   return (
     <View className="gap-4">
       <View className="gap-1">
-        <Text className="font-semibold text-foreground text-lg">Sign in</Text>
+        <Text className="font-semibold text-foreground text-lg">
+          Iniciar sesion
+        </Text>
         <Text className="text-foreground/60 text-sm">
-          Continue with your account credentials.
+          Continua con las credenciales de tu cuenta.
         </Text>
       </View>
 
@@ -142,7 +145,7 @@ function SignIn() {
                   {(field) => (
                     <TextField>
                       <Label className="mb-1 text-foreground/70 text-xs uppercase tracking-wide">
-                        Email
+                        Correo
                       </Label>
                       <Input
                         className="rounded-xl bg-background"
@@ -174,7 +177,7 @@ function SignIn() {
                   {(field) => (
                     <TextField>
                       <Label className="mb-1 text-foreground/70 text-xs uppercase tracking-wide">
-                        Password
+                        Contrasena
                       </Label>
                       <Input
                         className="rounded-xl bg-background"
@@ -208,7 +211,7 @@ function SignIn() {
                     <Spinner size="sm" color="default" />
                   ) : (
                     <Button.Label className="font-semibold">
-                      Sign In
+                      Iniciar sesion
                     </Button.Label>
                   )}
                 </Button>

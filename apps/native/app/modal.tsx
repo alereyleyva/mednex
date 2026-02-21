@@ -25,14 +25,15 @@ function Modal() {
               />
             </View>
             <Text className="mb-1 font-medium text-foreground text-lg">
-              Modal Screen
+              Pantalla modal
             </Text>
             <Text className="mb-4 text-center text-muted text-sm">
-              This is an example modal screen for dialogs and confirmations.
+              Esta es una pantalla modal de ejemplo para dialogos y
+              confirmaciones.
             </Text>
           </View>
           <Button onPress={handleClose} className="w-full" size="sm">
-            <Button.Label>Close</Button.Label>
+            <Button.Label>Cerrar</Button.Label>
           </Button>
         </Surface>
       </View>
