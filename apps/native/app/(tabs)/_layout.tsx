@@ -8,7 +8,6 @@ import { authClient } from "@/lib/auth-client";
 
 export default function TabsLayout() {
   const { data: session, isPending } = authClient.useSession();
-  const foregroundColor = useThemeColor("foreground");
   const backgroundColor = useThemeColor("background");
 
   if (isPending) {
@@ -32,14 +31,7 @@ export default function TabsLayout() {
     <Tabs
       initialRouteName="home"
       screenOptions={{
-        headerStyle: {
-          backgroundColor,
-        },
-        headerTintColor: foregroundColor,
-        headerTitleStyle: {
-          color: foregroundColor,
-          fontWeight: "600",
-        },
+        headerShown: false,
         tabBarStyle: {
           backgroundColor,
         },
