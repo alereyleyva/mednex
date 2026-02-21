@@ -20,8 +20,17 @@ export default function AuthLandingScreen() {
     return (
       <Container className="px-6 py-8" isScrollable={false}>
         <View className="flex-1 items-center justify-center">
-          <Spinner size="lg" color="default" />
-          <Text className="mt-3 text-muted">Checking your session...</Text>
+          <View className="rounded-3xl bg-default-100 px-8 py-10">
+            <View className="items-center gap-3">
+              <Spinner size="lg" color="default" />
+              <Text className="font-medium text-foreground">
+                Preparing workspace
+              </Text>
+              <Text className="text-muted text-sm">
+                Checking your session...
+              </Text>
+            </View>
+          </View>
         </View>
       </Container>
     );
@@ -32,80 +41,77 @@ export default function AuthLandingScreen() {
   }
 
   return (
-    <Container className="px-6 py-8">
-      <View className="mt-2 gap-6">
-        <View className="mb-2 items-center justify-center">
-          <View className="mb-6 h-20 w-20 items-center justify-center rounded-3xl bg-primary/10">
-            <Ionicons name="medkit" size={36} color={foregroundColor} />
-          </View>
-          <Text className="text-center font-extrabold text-4xl text-foreground tracking-tight">
-            Mednex
-          </Text>
-          <Text className="mt-4 text-center text-base text-foreground/60 leading-6">
-            AI-powered support for guided procedures, clinical knowledge, and
-            image analysis.
-          </Text>
-        </View>
+    <Container className="px-5 py-6" scrollViewProps={{ bounces: false }}>
+      <View className="relative flex-1 justify-center">
+        <View className="absolute top-12 -left-14 h-40 w-40 rounded-full bg-primary/10" />
+        <View className="absolute -right-12 bottom-16 h-52 w-52 rounded-full bg-default-100" />
 
-        <Card
-          variant="secondary"
-          className="rounded-2xl border border-default-200 p-2"
-        >
-          <Text className="mb-2 px-1 font-medium text-muted text-xs uppercase tracking-wide">
-            Access
-          </Text>
-          <View className="flex-row rounded-xl bg-default-100 p-1">
-            <Button
-              className={`flex-1 rounded-lg ${mode === "signin" ? "bg-background shadow-sm" : "bg-transparent"}`}
-              onPress={() => {
-                setMode("signin");
-              }}
-            >
-              <View className="flex-row items-center justify-center gap-2">
-                <Ionicons
-                  name="log-in-outline"
-                  size={16}
-                  color={mode === "signin" ? foregroundColor : "#6b7280"}
-                />
+        <View className="mx-auto w-full max-w-xl gap-6">
+          <View className="items-center gap-4">
+            <View className="h-16 w-16 items-center justify-center rounded-2xl bg-default-100">
+              <Ionicons
+                name="medkit-outline"
+                size={28}
+                color={foregroundColor}
+              />
+            </View>
+
+            <View className="items-center gap-2">
+              <Text className="font-extrabold text-4xl text-foreground tracking-tight">
+                Welcome back
+              </Text>
+              <Text className="max-w-sm text-center text-base text-foreground/60 leading-6">
+                Sign in to Mednex for guided procedures and fast clinical
+                answers.
+              </Text>
+            </View>
+          </View>
+
+          <Card className="rounded-3xl bg-background/95 p-3">
+            <View className="mb-3 flex-row rounded-2xl bg-default-100 p-1">
+              <Button
+                className={`flex-1 rounded-xl ${mode === "signin" ? "bg-background" : "bg-transparent"}`}
+                onPress={() => {
+                  setMode("signin");
+                }}
+              >
                 <Button.Label
                   className={
                     mode === "signin"
                       ? "font-semibold text-foreground"
-                      : "text-foreground/70"
+                      : "font-medium text-foreground/60"
                   }
                 >
-                  Log In
+                  Sign In
                 </Button.Label>
-              </View>
-            </Button>
-            <Button
-              className={`flex-1 rounded-lg ${mode === "signup" ? "bg-background shadow-sm" : "bg-transparent"}`}
-              onPress={() => {
-                setMode("signup");
-              }}
-            >
-              <View className="flex-row items-center justify-center gap-2">
-                <Ionicons
-                  name="person-add-outline"
-                  size={16}
-                  color={mode === "signup" ? foregroundColor : "#6b7280"}
-                />
+              </Button>
+
+              <Button
+                className={`flex-1 rounded-xl ${mode === "signup" ? "bg-background" : "bg-transparent"}`}
+                onPress={() => {
+                  setMode("signup");
+                }}
+              >
                 <Button.Label
                   className={
                     mode === "signup"
                       ? "font-semibold text-foreground"
-                      : "text-foreground/70"
+                      : "font-medium text-foreground/60"
                   }
                 >
-                  Sign Up
+                  Create Account
                 </Button.Label>
-              </View>
-            </Button>
-          </View>
-        </Card>
+              </Button>
+            </View>
 
-        <View className="mt-2 text-foreground">
-          {mode === "signin" ? <SignIn /> : <SignUp />}
+            <View className="rounded-2xl bg-default-50 px-4 py-5">
+              {mode === "signin" ? <SignIn /> : <SignUp />}
+            </View>
+          </Card>
+
+          <Text className="px-4 text-center text-foreground/50 text-xs leading-5">
+            By continuing, you agree to the Mednex Terms and Privacy Policy.
+          </Text>
         </View>
       </View>
     </Container>

@@ -5,7 +5,6 @@ import {
   Input,
   Label,
   Spinner,
-  Surface,
   TextField,
   useToast,
 } from "heroui-native";
@@ -55,6 +54,26 @@ function getErrorMessage(error: unknown): string | null {
   return null;
 }
 
+function normalizeSignInError(error: unknown): string {
+  const rawMessage = getErrorMessage(error)?.toLowerCase() ?? "";
+
+  if (
+    rawMessage.includes("invalid credential") ||
+    rawMessage.includes("invalid email or password") ||
+    rawMessage.includes("user not found")
+  ) {
+    return "Email or password is incorrect. Please try again.";
+  }
+
+  if (rawMessage.includes("too many") || rawMessage.includes("rate limit")) {
+    return "Too many attempts. Please wait a moment and try again.";
+  }
+
+  return (
+    getErrorMessage(error) ?? "Unable to sign in right now. Please try again."
+  );
+}
+
 function SignIn() {
   const passwordInputRef = useRef<TextInput>(null);
   const { toast } = useToast();
@@ -75,9 +94,10 @@ function SignIn() {
         },
         {
           onError(error) {
+            const message = normalizeSignInError(error.error?.message || error);
             toast.show({
               variant: "danger",
-              label: error.error?.message || "Failed to sign in",
+              label: message,
             });
           },
           onSuccess() {
@@ -94,8 +114,13 @@ function SignIn() {
   });
 
   return (
-    <Surface variant="secondary" className="rounded-lg p-4">
-      <Text className="mb-4 font-medium text-foreground">Sign In</Text>
+    <View className="gap-4">
+      <View className="gap-1">
+        <Text className="font-semibold text-foreground text-lg">Sign in</Text>
+        <Text className="text-foreground/60 text-sm">
+          Continue with your account credentials.
+        </Text>
+      </View>
 
       <form.Subscribe
         selector={(state) => ({
@@ -112,12 +137,15 @@ function SignIn() {
                 {formError}
               </FieldError>
 
-              <View className="gap-3">
+              <View className="gap-4">
                 <form.Field name="email">
                   {(field) => (
                     <TextField>
-                      <Label>Email</Label>
+                      <Label className="mb-1 text-foreground/70 text-xs uppercase tracking-wide">
+                        Email
+                      </Label>
                       <Input
+                        className="rounded-xl bg-background"
                         value={field.state.value}
                         onBlur={field.handleBlur}
                         onChangeText={field.handleChange}
@@ -132,6 +160,12 @@ function SignIn() {
                           passwordInputRef.current?.focus();
                         }}
                       />
+                      <FieldError
+                        isInvalid={!!getErrorMessage(field.state.meta.errors)}
+                        className="mt-1"
+                      >
+                        {getErrorMessage(field.state.meta.errors)}
+                      </FieldError>
                     </TextField>
                   )}
                 </form.Field>
@@ -139,8 +173,11 @@ function SignIn() {
                 <form.Field name="password">
                   {(field) => (
                     <TextField>
-                      <Label>Password</Label>
+                      <Label className="mb-1 text-foreground/70 text-xs uppercase tracking-wide">
+                        Password
+                      </Label>
                       <Input
+                        className="rounded-xl bg-background"
                         ref={passwordInputRef}
                         value={field.state.value}
                         onBlur={field.handleBlur}
@@ -152,6 +189,12 @@ function SignIn() {
                         returnKeyType="go"
                         onSubmitEditing={form.handleSubmit}
                       />
+                      <FieldError
+                        isInvalid={!!getErrorMessage(field.state.meta.errors)}
+                        className="mt-1"
+                      >
+                        {getErrorMessage(field.state.meta.errors)}
+                      </FieldError>
                     </TextField>
                   )}
                 </form.Field>
@@ -159,12 +202,14 @@ function SignIn() {
                 <Button
                   onPress={form.handleSubmit}
                   isDisabled={isSubmitting}
-                  className="mt-1"
+                  className="mt-1 h-12 rounded-xl"
                 >
                   {isSubmitting ? (
                     <Spinner size="sm" color="default" />
                   ) : (
-                    <Button.Label>Sign In</Button.Label>
+                    <Button.Label className="font-semibold">
+                      Sign In
+                    </Button.Label>
                   )}
                 </Button>
               </View>
@@ -172,7 +217,7 @@ function SignIn() {
           );
         }}
       </form.Subscribe>
-    </Surface>
+    </View>
   );
 }
 
